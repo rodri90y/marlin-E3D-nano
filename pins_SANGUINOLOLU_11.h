@@ -9,7 +9,7 @@
 #define HOME_PIN       17
 #define GND3_PIN       30
 
-#define PRINT_START_PIN        10        //��ʼ��ӡ��
+#define PRINT_START_PIN        10        //��ʼ��ӡ�� (Since the beginning, tprint)
 #define LED_PIN            27
 
 #define RETRACT_PIN        16
@@ -33,7 +33,6 @@
 #define E0_DIR_PIN          0
 
 #define FAN0_PIN            4
-
 #define FAN_PIN            4
 
 #if MB(AZTEEG_X1) || MB(STB_11) || MB(MELZI)
@@ -180,7 +179,7 @@
   #define SD_DETECT_PIN         -1
 //  (added for oled display support)
   #ifdef SSD1306_OLED_I2C_CONTROLLER
-     #define LCD_SDSS -1
+     #define LCD_SDSS -1 // Smart Controller SD card reader rather than the Melzi
      #define BTN_EN1 30  // A1 - rotary encoder A
      #define BTN_EN2 29  // A2 - rotary encoder B
      #define BTN_ENC 28  // A3 - rotary encoder push switch
