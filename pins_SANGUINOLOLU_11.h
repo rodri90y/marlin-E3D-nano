@@ -9,6 +9,12 @@
 #define HOME_PIN       17
 #define GND3_PIN       30
 
+//#define LCD_SDSS -1 // Smart Controller SD card reader rather than the Melzi
+//#define BTN_EN1 30  // A1 - rotary encoder A
+//#define BTN_EN2 29  // A2 - rotary encoder B
+//#define BTN_ENC 28  // A3 - rotary encoder push switch
+
+
 #define PRINT_START_PIN        10        //��ʼ��ӡ�� (Since the beginning, tprint)
 #define LED_PIN            27
 
@@ -93,7 +99,7 @@
 #if ENABLED(ULTRA_LCD) && ENABLED(NEWPANEL)
 
   // No buzzer installed
-  #define BEEPER_PIN 30
+  #define BEEPER_PIN 10
 
   // LCD Pins
   #if ENABLED(DOGLCD)
@@ -113,6 +119,16 @@
         #define LCD_PINS_D6     28
         #define LCD_PINS_D7     27
       #endif
+
+    #elif ENABLED(SSD1306_OLED_I2C_CONTROLLER)
+    //  (added for oled display support)   <<<<<<<<<<<<<<
+      #define BTN_EN1 30
+      #define BTN_EN2 29
+      #define BTN_ENC 28
+      #define BEEPER_PIN 10
+      #define LCD_SDSS -1
+      #define SD_DETECT_PIN -1
+      #define KILL_PIN -1
 
     #else // DOGM SPI LCD Support
 
@@ -140,14 +156,14 @@
   #endif // !DOGLCD
 
   //The encoder and click button
- // #define BTN_EN1               10
-  #define BTN_EN2               11
+  #define BTN_EN1               30
+  #define BTN_EN2               29
   #if ENABLED(LCD_I2C_PANELOLU2)
     #if MB(MELZI)
-      #define BTN_ENC           29
-      #define LCD_SDSS          30 // Panelolu2 SD card reader rather than the Melzi
+      #define BTN_ENC           28
+      #define LCD_SDSS          -1 // Panelolu2 SD card reader rather than the Melzi
     #else
-      #define BTN_ENC           30
+      #define BTN_ENC           28
     #endif
   #else
     #define BTN_ENC             28
@@ -177,14 +193,15 @@
   #define BTN_ENC               16
 
   #define SD_DETECT_PIN         -1
+
 //  (added for oled display support)
-  #ifdef SSD1306_OLED_I2C_CONTROLLER
-     #define LCD_SDSS -1 // Smart Controller SD card reader rather than the Melzi
-     #define BTN_EN1 30  // A1 - rotary encoder A
-     #define BTN_EN2 29  // A2 - rotary encoder B
-     #define BTN_ENC 28  // A3 - rotary encoder push switch
-     #define BEEPER  10  // RX1 - piezo beeper
-  #endif
+//  #ifdef SSD1306_OLED_I2C_CONTROLLER
+//     #define LCD_SDSS -1 // Smart Controller SD card reader rather than the Melzi
+//     #define BTN_EN1 30  // A1 - rotary encoder A
+//     #define BTN_EN2 29  // A2 - rotary encoder B
+//     #define BTN_ENC 28  // A3 - rotary encoder push switch
+//     #define BEEPER  10  // RX1 - piezo beeper
+//  #endif
 
 #endif // MAKRPANEL
 

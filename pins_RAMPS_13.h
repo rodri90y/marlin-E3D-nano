@@ -164,15 +164,15 @@
 
       #define SD_DETECT_PIN 49
 
-    #elif ENABLED(SSD1306_OLED_I2C_CONTROLLER)
-    //  (added for oled display support)
-      #define BTN_EN1 31
-      #define BTN_EN2 33
-      #define BTN_ENC 35
-      #define BEEPER 37
-      #define LCD_SDSS 53
-      #define SD_DETECT_PIN -1
-      #define KILL_PIN -1
+//    #elif ENABLED(SSD1306_OLED_I2C_CONTROLLER)
+//    //  (added for oled display support)   <<<<<<<<<<<<<<
+//      #define BTN_EN1 30
+//      #define BTN_EN2 29
+//      #define BTN_ENC 28
+//      #define BEEPER 10
+//      #define LCD_SDSS -1
+//      #define SD_DETECT_PIN -1
+//      #define KILL_PIN -1
 
     #elif ENABLED(LCD_I2C_PANELOLU2)
       #define BTN_EN1 47  // reverse if the encoder turns the wrong way.

@@ -23,7 +23,7 @@ uint8_t print_key_flag = 0;
 float z_height_stop = 0; 
 float temperature_protect_last = 0;
 uint32_t protect_time = 0;
-uint8_t print_pause = 0; //用来表示打印暂停
+uint8_t print_pause = 0; //用来表示打印暂停 (Used to indicate that printing is paused) RY
 
 uint32_t sys_time = 0;
 
@@ -304,13 +304,13 @@ void LoadFilament(void)
 			filament_time = millis();
 		}
 	}
-	else if(filament_status == 1) 
+	else if(filament_status == 1)
 	{
 		if(filament_time+20<millis())
 		{
 			if((!READ(RETRACT_PIN))||(!READ(FEED_PIN)))
 			{
-				setTargetHotend0(195); 
+				setTargetHotend0(195);
                 setTargetHotend0(195);
 				BLINK_LED(LED_BLINK_7);
 				protect_time = millis();
@@ -320,26 +320,26 @@ void LoadFilament(void)
 			{
 				filament_status = 0;
 			}
-		}	
+		}
 	}
-	else if(filament_status == 2) 
+	else if(filament_status == 2)
 	{
 		if(current_temperature[0] > 180)
 		{
-			filament_status++;		
+			filament_status++;
 			BLINK_LED(LED_BLINK_5);
-		}	
+		}
 		if((READ(RETRACT_PIN))&&(READ(FEED_PIN)))
 		{
 			cleaning_buffer_counter=2;
 			BLINK_LED(LED_ON);
-			filament_status = 0;	
+			filament_status = 0;
 		}
 	}
-	else if(filament_status == 3) 
+	else if(filament_status == 3)
 	{
 		static uint8_t flag = 0;
-		if(!READ(RETRACT_PIN)) 
+		if(!READ(RETRACT_PIN))
 		{
 			if(flag ==0)
 			{
@@ -348,7 +348,7 @@ void LoadFilament(void)
 				flag = 1;
 			}
 		}
-		if(!READ(FEED_PIN))  
+		if(!READ(FEED_PIN))
 		{
 			if(flag ==0)
 			{
@@ -357,7 +357,7 @@ void LoadFilament(void)
 				flag = 1;
 			}
 		}
-		if((READ(RETRACT_PIN))&&(READ(FEED_PIN))) 
+		if((READ(RETRACT_PIN))&&(READ(FEED_PIN)))
 		{
 			flag = 0;
 			filament_status = 0;
@@ -368,7 +368,7 @@ void LoadFilament(void)
 	else
 	{
 		filament_status = 0;
-	}	
+	}
 }
 
 

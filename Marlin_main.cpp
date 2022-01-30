@@ -767,8 +767,8 @@ void setup() {
   setup_homepin();
   
   int i=Z_HEIGHT_EEPROM;
-  EEPROM_READ_VAR(i,z_height_stop); //读出当前Z的高度
-  if(z_height_stop > Z_MAX_POS+1) //高度错误,把高度写0
+  EEPROM_READ_VAR(i,z_height_stop); //读出当前Z的高度  (Read the current Z height) RY
+  if(z_height_stop > Z_MAX_POS+1) //高度错误,把高度写0 (The height is wrong, write the height as 0) RY
   {
 	  z_height_stop = Z_MAX_POS;
   }
@@ -1016,7 +1016,7 @@ void get_command() {
           ((serial_char == '#' || serial_char == ':') && !comment_mode) ||
           serial_count >= (MAX_CMD_SIZE - 1) || n == -1
       ) {
-        if (card.eof()) { //这里是打印完成后的操作
+        if (card.eof()) { //这里是打印完成后的操作 (Here's what to do after printing) RY
           SERIAL_PROTOCOLLNPGM(MSG_FILE_PRINTED);
           print_job_stop_ms = millis();
           char time[30];
@@ -1030,7 +1030,7 @@ void get_command() {
           card.checkautostart(true);
 		  BLINK_LED(LED_ON);
 		  
-		  z_height_stop = destination[Z_AXIS]; //保存取消打印时的Z轴高度
+		  z_height_stop = destination[Z_AXIS]; //保存取消打印时的Z轴高度 (Save the Z-axis height when canceling the print) RY
 	
 		  
 		  print_key_flag = 0; 
@@ -7293,7 +7293,7 @@ void Stop() {
 bool setTargetedHotend(int code) {
   target_extruder = active_extruder; //有效的挤出头号
   if (code_seen('T')) {
-    target_extruder = code_value_short(); //T后面跟的是挤出头号
+    target_extruder = code_value_short(); //T后面跟的是挤出头号 (T followed by extrusion number one) RY
     if (target_extruder >= EXTRUDERS) {
       SERIAL_ECHO_START;
       SERIAL_CHAR('M');

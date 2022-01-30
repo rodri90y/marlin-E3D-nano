@@ -117,7 +117,7 @@
   //U8GLIB_ST7920_128X64_RRD u8g(0,0,0);
   U8GLIB_ST7920_128X64_RRD u8g(0);
 #elif defined(U8GLIB_SSD1306)
-  //  (added for oled display support)
+  //  (added for oled display support)  <<<<<<
   U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_NO_ACK|U8G_I2C_OPT_FAST);
 #elif ENABLED(MAKRPANEL)
   // The MaKrPanel display, ST7565 controller as well
